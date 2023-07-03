@@ -1,0 +1,45 @@
+version: "3.1"
+services:
+  www_adpet:
+    container_name: www_adpet
+    build: .
+    ports:
+      - 8086:80
+    volumes:
+      - ./:/var/www/html
+    links:
+      - db_adpet
+    networks:
+      - adpetnet
+  db_adpet:
+    image: mysql:5.7.16
+    container_name: db_adpet
+    ports:
+      - "13306:3306"
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: adpetdb
+    volumes:
+      - ./mysql/:/var/lib/mysql
+    networks:
+      - adpetnet
+  phpmyadmin_adpet:
+    container_name: phpmyadmin_adpet
+    image: phpmyadmin/phpmyadmin
+    links:
+      - db_adpet:db
+    ports:
+      - 8096:80
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root  
+    depends_on:
+      - db_adpet
+    networks:
+      - adpetnet
+      
+networks:
+  adpetnet:
+    driver: bridge
