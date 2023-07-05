@@ -8,6 +8,7 @@
 * CSS 3
 * Bootstrap [verificar versão]
 * Framework CakePHP 4.4
+* MySql
 * Docker Compose
 
 # CakePHP Application Skeleton
