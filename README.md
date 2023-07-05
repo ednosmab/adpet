@@ -1,3 +1,15 @@
+# Olá, seja bem vindo ao AdPet
+
+![1](https://github.com/ednosmab/adpet/assets/37445442/78679d07-fa48-44fa-91eb-80d5bff8f886)
+
+## Ferramentas utilizadas:
+* Stack PHP 8.2
+* Html 5
+* CSS 3
+* Bootstrap [verificar versão]
+* Framework CakePHP 4.4
+* Docker Compose
+
 # CakePHP Application Skeleton
 
 ![Build Status](https://github.com/cakephp/app/actions/workflows/ci.yml/badge.svg?branch=master)
@@ -51,3 +63,9 @@ Other environment agnostic settings can be changed in `config/app.php`.
 The app skeleton uses [Milligram](https://milligram.io/) (v1.3) minimalist CSS
 framework by default. You can, however, replace it with any other library or
 custom styles.
+
+## Feito por:
+
+### Edson Garcia
+
+### Para a realização do desenvolvimento desse sistema, foi utilizado o livro CakePHP Construa aplicações web robustas rapidamente, do autor José Carlos Lima Moreira 
