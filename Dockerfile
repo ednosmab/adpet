@@ -30,9 +30,11 @@ RUN docker-php-ext-install pgsql
 RUN docker-php-ext-install zip
 RUN docker-php-ext-install opcache
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer
-ENV APP_HOME /var/www/html
+ENV APP_HOME /var/www/html/
 RUN usermod -u 1000 www-data && groupmod -g 1000 www-data
-#RUN sed -i -e "s/html/html\/webroot/g" /etc/apache2/sites-enabled/000-default.conf
+RUN sed -i -e "s/html/html\/webroot/g" /etc/apache2/sites-enabled/000-default.conf
 RUN a2enmod rewrite
 COPY . $APP_HOME
 RUN chown -R www-data:www-data $APP_HOME
+RUN chmod -R 777 $APP_HOME
+RUN chmod -R 777 /tmp

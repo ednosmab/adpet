@@ -17,6 +17,7 @@ class PetsController extends AppController
      */
     public function index()
     {
+
         $pets = $this->paginate($this->Pets);
 
         $this->set(compact('pets'));
