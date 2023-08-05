@@ -48,14 +48,15 @@ return static function (RouteBuilder $routes) {
         
         $builder->connect('/', ['controller' => 'Pets', 'action' => 'index']);
 
-        $builder->connect('/pet/:id', [
-            ['controller' => 'Pets', 'action' => 'view'],
-            [
-                'pass' => ['id'],
-                'id' => '[0-9]+'
-            ]
-        ]);
+        // $builder->connect('/pets/:id', [
+        //     ['controller' => 'Pets', 'action' => 'view'],
+        //     [
+        //         'pass' => ['id'],
+        //         'id' => '[0-9]+'
+        //     ]
+        // ]);
 
+        $builder->connect('/pets/:id', ['controller' => 'Pets', 'action' => 'view']);
         /*
          * Connect catchall routes for all controllers.
          *
