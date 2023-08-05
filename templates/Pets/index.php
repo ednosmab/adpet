@@ -6,6 +6,9 @@
     <title>Document</title>
 </head>
 <body>
-    oi oi
+    <h2>
+        <?= $message;?>
+        <?= $version;?>
+    </h2>
 </body>
 </html>

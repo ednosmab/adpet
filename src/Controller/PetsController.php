@@ -19,7 +19,13 @@ class PetsController extends AppController
      */
     public function index()
     {
-        $this->render('/Pets/index');
+        // $this->render('/Pets/index');
+        // $this->set('message', 'Aprendendo CakePHP');
+        $dados = [
+            'message' => 'Aprendendo CakePHP',
+            'version' => '4.0'
+        ];
+        $this->set($dados);
     }
 
     /**
@@ -33,13 +39,16 @@ class PetsController extends AppController
     {
         try {
             $pet = $this->Pets->get($id, [
-                'contain' => [],
+                'contain' => []
             ]);
 
         } catch (RecordNotFoundException $ex) {
             return $this->redirect(['action' => 'index'], 404);
-        
+            
         } finally{
+            if(!isset($pet)){
+                return $this->redirect(['action' => 'index']);
+            }
             $this->set('pet', $pet);
             $this->set('_serialize', ['pet']);
         }
