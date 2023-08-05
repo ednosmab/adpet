@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Cake\Datasource\Exception\RecordNotFoundException;
+
 /**
  * Pets Controller
  *
@@ -17,10 +19,7 @@ class PetsController extends AppController
      */
     public function index()
     {
-
-        $pets = $this->paginate($this->Pets);
-
-        $this->set(compact('pets'));
+        $this->render('/Pets/index');
     }
 
     /**
@@ -32,11 +31,18 @@ class PetsController extends AppController
      */
     public function view($id = null)
     {
-        $pet = $this->Pets->get($id, [
-            'contain' => [],
-        ]);
+        try {
+            $pet = $this->Pets->get($id, [
+                'contain' => [],
+            ]);
 
-        $this->set(compact('pet'));
+        } catch (RecordNotFoundException $ex) {
+            return $this->redirect(['action' => 'index'], 404);
+        
+        } finally{
+            $this->set('pet', $pet);
+            $this->set('_serialize', ['pet']);
+        }
     }
 
     /**
